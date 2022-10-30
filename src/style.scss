@@ -1,0 +1,485 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+.formContainer {
+  background-color: #a7bcff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+
+  .formWrapper {
+    width: 30%;
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    @include tablet {
+      width: 70%;
+      padding: 10px 30px;
+    }
+    @include mobile {
+      width: 100%;
+      padding: 10px 20px;
+
+    }
+
+    .logo {
+      color: #5d5b8d;
+      font-weight: bold;
+      font-size: 24px;
+
+    }
+
+    .title {
+      color: #5d5b8d;
+      font-size: 12px;
+    }
+
+    form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      @include mobile {
+        width: 100%;
+
+      }
+
+      input {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-bottom: 1px solid #a7bcff;
+        @include mobile {
+          width: calc(100% - 30px);
+        }
+
+        &::placeholder {
+          color: rgb(175, 175, 175);
+        }
+      }
+
+      button {
+        background-color: #7b96ec;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #8da4f1;
+        font-size: 12px;
+        cursor: pointer;
+
+        img {
+          width: 32px;
+        }
+      }
+    }
+
+    .loading {
+      font-size: 14px;
+    }
+
+    p {
+      color: #5d5b8d;
+      font-size: 12px;
+      margin-top: 10px;
+
+    }
+  }
+}
+
+.home {
+  background-color: #a7bcff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 65%;
+    height: 80%;
+    display: flex;
+    overflow: hidden;
+    @include tablet {
+      width: 80%;
+    }
+    @include mobile {
+      width: 70%;
+    }
+
+
+
+    .sidebar {
+      flex: 1;
+      background-color: #3e3c61;
+      position: relative;
+      transition: 1s ease-out transfom;
+      overflow: hidden;
+      @include mobile {
+
+      }
+
+      .navbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background-color: #2f2d52;
+        padding: 10px;
+        justify-content: space-between;
+        color: #ddddf7;
+
+        .logo {
+          font-weight: bold;
+          @include tablet {
+            display: none;
+          }
+        }
+
+        .user {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+
+          img {
+            background-color: #ddddf7;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          button {
+            background-color: #5d5b8d;
+            color: #ddddf7;
+            font-size: 10px;
+            border: none;
+            cursor: pointer;
+            @include tablet {
+
+            }
+          }
+        }
+      }
+
+
+
+      .search {
+        border-bottom: 1px solid gray;
+
+        .searchForm {
+          padding: 10px;
+
+          input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: none;
+
+
+            &::placeholder {
+              color: lightgray;
+            }
+          }
+        }
+      }
+      .chats{
+        height: 100%;
+        overflow: auto;
+      }
+      .userChat {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #2f2d52;
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .userChatInfo {
+          span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+
+          p {
+            font-size: 14px;
+            color: lightgray;
+          }
+        }
+      }
+    }
+    .mobile {
+      position: absolute;
+      opacity: 0;
+      transition: 1s ease-out transfom;
+      transform: translateX(-100%);
+    }
+
+    .chat {
+      flex: 2;
+      @include mobile {
+        width: 100%;
+      }
+
+      .chatInfo {
+        height: 8%;
+        background-color: #5d5b8d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        color: lightgray;
+        @include tablet {
+          padding: 0 5px;
+        }
+        @include mobile {
+        }
+
+      }
+
+      .chatIcons {
+        display: flex;
+        gap: 10px;
+
+        img {
+          @include tablet {
+            height: 22px;
+          }
+          @include mobile {
+            height: 20px;
+          }
+
+
+          height: 24px;
+          cursor: pointer;
+
+
+        }
+      }
+
+      .messages {
+        background-color: #ddddf7;
+        padding: 10px;
+        height: 84%;
+        overflow: auto;
+        @include tablet {
+          height: 85%;
+        }
+        @include mobile {
+        }
+
+        .message {
+          display: flex;
+          justify-content: flex-start;
+          gap: 7px;
+          margin-bottom: 20px;
+          @include tablet {
+            gap: 6px;
+            margin-bottom: 15px;
+          }
+          @include mobile {
+            margin-bottom: 10px;
+          }
+
+
+          .messageInfo {
+            display: flex;
+            flex-direction: column;
+            color: gray;
+            font-weight: 300;
+            font-size: 12px;
+            align-items: flex-start;
+
+            span {
+
+              @include tablet {
+                font-size: 12px;
+              }
+              @include mobile {
+                font-size: 10px;
+              }
+
+            }
+
+            img {
+              direction: rtl;
+
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+              @include tablet {
+
+              }
+              @include mobile {
+                width: 25px;
+                height: 25px;
+              }
+            }
+          }
+
+          .messageContent {
+            max-width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: flex-end;
+            @include tablet {
+              gap: 5px;
+            }
+            @include mobile {
+              gap: 5px;
+            }
+
+
+            p {
+              background-color: white;
+              padding: 10px 20px;
+              border-radius: 0 10px 10px 10px;
+              max-width: max-content;
+              @include tablet {
+
+              }
+              @include mobile {
+                padding: 5px 10px;
+              }
+            }
+
+            img {
+              width: 50%;
+            }
+          }
+
+          &.owner {
+            flex-direction: row-reverse;
+            .messageInfo{
+              align-items: flex-end;
+            }
+            .messageContent {
+              align-items: flex-end;
+
+              p {
+                background-color: #8da4f1;
+                color: white;
+                border-radius: 10px 0 10px 10px;
+              }
+            }
+          }
+        }
+      }
+
+      .input {
+        height: 8%;
+        background-color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include tablet {
+          height: 7%;
+          padding: 0 5px;
+        }
+        @include mobile {
+          padding: 0 5px;
+        }
+
+
+        textarea {
+          height: 100%;
+          resize: none;
+          width: 100%;
+          border: none;
+          outline: none;
+          color: #2f2d52;
+          font-size: 15px;
+
+          @include mobile {
+            font-size: 14px;
+          }
+
+          &::placeholder {
+            display: inline-block;
+            color: lightgray;
+          }
+        }
+
+        .send {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            height: 24px;
+            cursor: pointer;
+            @include tablet {
+              height: 22px;
+            }
+            @include mobile {
+              height: 20px;
+            }
+          }
+
+          button {
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            background-color: #8da4f1;
+            cursor: pointer;
+            @include tablet {
+              padding: 7px 12px;
+            }
+            @include mobile {
+              padding: 5px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
