@@ -5,7 +5,7 @@ import { ChatsContext } from "../context/ChatsContext";
 const Chats = () => {
   const {chats} = useContext(ChatsContext);
   const { dispatch } = useContext(ChatContext);
-
+  console.log(chats)
   const handleSelect = (user) => {
     dispatch({ type: "CHANGE_USER", payload: user });
   };

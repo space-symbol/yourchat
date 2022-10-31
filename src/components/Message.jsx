@@ -33,7 +33,7 @@ const Message = ({ message }) => {
       <div className="messageInfo">
         <img
           src={
-            message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL
+            message && (message.senderId === currentUser.uid) ? currentUser.photoURL : data.user.photoURL
           }
           alt=""
         />

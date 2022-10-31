@@ -3,15 +3,17 @@ import {signOut} from "firebase/auth"
 import {auth} from '../firebase'
 import {AuthContext} from '../context/AuthContext'
 import {ChatContext} from "../context/ChatContext";
-import {type} from "@testing-library/user-event/dist/type";
+import {ChatsContext} from "../context/ChatsContext";
 
 const Navbar = () => {
     const {currentUser} = useContext(AuthContext)
     const {dispatch} = useContext(ChatContext)
+    const {setChats} = useContext(ChatsContext)
 
     const Out = () => {
+        dispatch({type: "RESET_USER"});
+        setChats({})
         signOut(auth)
-       dispatch({type: "RESET_USER"})
 
     }
     return (

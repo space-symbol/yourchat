@@ -21,8 +21,9 @@ export const ChatsContextProvider = ({children}) => {
 
         currentUser?.uid &&  getChats();
     }, [currentUser?.uid]);
+
     return (
-        <ChatsContext.Provider value={{chats: chats}}>
+        <ChatsContext.Provider value={{chats: chats, setChats: setChats}}>
             {children}
         </ChatsContext.Provider>
     );
